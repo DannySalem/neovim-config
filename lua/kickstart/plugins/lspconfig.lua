@@ -14,7 +14,9 @@ return {
         ---@module 'mason.settings'
         ---@type MasonSettings
         ---@diagnostic disable-next-line: missing-fields
-        opts = {},
+        opts = {
+          ensure_installed = { "lua_ls", 'vue-language-server@3.0.8', 'vstls' },
+        },
       },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
       'mason-org/mason-lspconfig.nvim',
@@ -117,6 +119,16 @@ return {
         end,
       })
 
+      -- Settings for VUE/TS servers
+      local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+      local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+      local vue_plugin = {
+        name = '@vue/typescript-plugin',
+        location = vue_language_server_path,
+        languages = { 'vue' },
+        --  configNamespace = 'typescript',
+      }
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --  See `:help lsp-config` for information about keys and how to configure
@@ -134,7 +146,19 @@ return {
         -- ts_ls = {},
 
         stylua = {}, -- Used to format Lua code
-
+        vue_ls = {}, -- Vue LSP
+        vtsls = {
+          settings = {
+            vtsls = {
+              tsserver = {
+                globalPlugins = {
+                  vue_plugin,
+                },
+              },
+            },
+          },
+          filetypes = tsserver_filetypes,
+        },
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
           on_init = function(client)
