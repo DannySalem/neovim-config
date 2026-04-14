@@ -15,7 +15,7 @@ return {
         ---@type MasonSettings
         ---@diagnostic disable-next-line: missing-fields
         opts = {
-          ensure_installed = { "lua_ls", 'vue-language-server@3.0.8', 'vstls' },
+          ensure_installed = { 'lua_ls', 'vue-language-server@3.0.8', 'vstls', 'clangd' },
         },
       },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
@@ -134,7 +134,7 @@ return {
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
