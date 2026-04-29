@@ -15,7 +15,7 @@ return {
         ---@type MasonSettings
         ---@diagnostic disable-next-line: missing-fields
         opts = {
-          ensure_installed = { 'lua_ls', 'vue-language-server@3.0.8', 'vstls', 'clangd' },
+          ensure_installed = { 'lua_ls', 'vue-language-server@3.0.8', 'vstls', 'clangd', 'basedpyright', 'ruff' },
         },
       },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
@@ -135,6 +135,7 @@ return {
       ---@type table<string, vim.lsp.Config>
       local servers = {
         clangd = {},
+        -- r_language_server = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -144,7 +145,8 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-
+        basedpyright = {}, -- Enhanced type checking
+        ruff = {}, -- Fast linting and formatting
         stylua = {}, -- Used to format Lua code
         vue_ls = {}, -- Vue LSP
         vtsls = {
