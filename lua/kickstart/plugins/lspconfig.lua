@@ -20,7 +20,8 @@ return {
       },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
       'mason-org/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      -- Installer for non LSP tools
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim', opts = { ensure_installed = { 'prettierd', 'tree-sitter-cli' } } },
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
