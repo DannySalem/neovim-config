@@ -9,5 +9,16 @@ return {
   main = 'ibl',
   ---@module 'ibl'
   ---@type ibl.config
-  opts = {},
+  opts = {
+    exclude = {
+      filetypes = {
+        'dashboard',
+        'alpha',
+        'starter',
+        'help',
+        'neo-tree',
+        'NvimTree',
+      },
+    },
+  },
 }
