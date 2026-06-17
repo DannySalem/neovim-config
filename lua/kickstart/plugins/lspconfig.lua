@@ -146,7 +146,16 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        basedpyright = {}, -- Enhanced type checking
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = 'off',
+                reportMissingTypeStubs = 'off',
+              },
+            },
+          },
+        }, -- Enhanced type checking
         ruff = {}, -- Fast linting and formatting
         stylua = {}, -- Used to format Lua code
         vue_ls = {}, -- Vue LSP
